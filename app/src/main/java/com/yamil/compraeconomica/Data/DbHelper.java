@@ -15,6 +15,7 @@ public class DbHelper extends SQLiteOpenHelper {
             "(" + Contract.Usuarios.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , "
             + Contract.Usuarios.COL_NOMBRE + " TEXT, "
             + Contract.Usuarios.COL_APELLIDO + " TEXT, "
+            + Contract.Usuarios.COL_CLAVE + " TEXT, "
             + Contract.Usuarios.COL_EMAIL + " TEXT)";
 
     public DbHelper(Context context) {

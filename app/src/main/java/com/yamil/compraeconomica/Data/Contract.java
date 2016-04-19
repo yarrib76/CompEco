@@ -11,5 +11,6 @@ public class Contract {
         public static final String COL_NOMBRE = "nombre";
         public static final String COL_APELLIDO = "apellido";
         public static final String COL_EMAIL = "email";
+        public static final String COL_CLAVE = "clave";
     }
 }
