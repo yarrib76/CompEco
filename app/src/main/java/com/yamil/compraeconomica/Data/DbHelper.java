@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "compraEconomica.sqlite";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     private static final String CREATE_TABLE_USUARIOS = "CREATE TABLE IF NOT EXISTS " + Contract.Usuarios.TABLA_USUARIOS +
             "(" + Contract.Usuarios.COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL , "

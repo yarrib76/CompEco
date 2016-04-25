@@ -10,35 +10,64 @@
         android:layout_height="wrap_content"
         android:text="Alta de Usuario"
         android:textSize="20dp"
-        android:layout_marginLeft="100dp"/>
+        android:layout_gravity="center" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_nombre"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Ingrese Nombre"/>
+        android:text="Apellido"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_apellido"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Ingrese Apellido"/>
+        android:text="Email"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_email"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Ingrese Email"
-        android:inputType="textEmailAddress"/>
+        android:text="Password"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_clave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Ingrese Clave"
-        android:inputType="textPassword"/>
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="100dp">
+        android:layout_gravity="center">
         <Button
             android:id="@+id/btn_guardar_usuario"
             android:layout_width="wrap_content"
