@@ -31,4 +31,15 @@ public class Consultas {
         }
         return false;
     }
+
+    public boolean validarPassword(String password){
+        String[] columns = {Contract.Usuarios.COL_APELLIDO};
+        String selection = Contract.Usuarios.COL_CLAVE + " LIKE ?";
+        String[] selectionArgs = {password};
+        cursor = provider.query(Contract.Usuarios.TABLA_USUARIOS,columns, selection, selectionArgs);
+        if (cursor != null && cursor.getCount() > 0){
+            return true;
+        }
+        return false;
+    }
 }

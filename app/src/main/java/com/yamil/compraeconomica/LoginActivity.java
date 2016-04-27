@@ -33,8 +33,16 @@ public class LoginActivity extends AppCompatActivity {
                 final Consultas consultas = new Consultas(LoginActivity.this);
                 boolean respuesta = consultas.exsisteUsuario(edit_email.getText().toString());
                 if (respuesta){
-                    Intent startAplication = new Intent(LoginActivity.this,MainActivity.class);
-                    startActivity(startAplication);
+                    boolean passwordCorrecto = consultas.validarPassword(edit_password.getText().toString());
+                    if (passwordCorrecto){
+                        Intent startAplication = new Intent(LoginActivity.this,MainActivity.class);
+                        startActivity(startAplication);
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Clave o Usuario Incorrectos", Toast.LENGTH_SHORT).show();
+                        edit_email.setText("");
+                        edit_password.setText("");
+                    }
+
                 } else {
                     final AlertDialog alertaPreguntaCrearUsuario = new AlertDialog.Builder(LoginActivity.this).create();
                     LayoutInflater inflater = LoginActivity.this.getLayoutInflater();
