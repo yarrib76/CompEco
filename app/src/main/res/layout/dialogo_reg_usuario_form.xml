@@ -20,8 +20,8 @@
         android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_nombre"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/edittext_esquina_redondeada"/>
     <TextView
@@ -32,8 +32,8 @@
         android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_apellido"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/edittext_esquina_redondeada"/>
     <TextView
@@ -44,8 +44,8 @@
         android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_email"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:inputType="textEmailAddress"
         android:layout_gravity="center"
         android:background="@drawable/edittext_esquina_redondeada"/>
@@ -57,8 +57,8 @@
         android:layout_gravity="center" />
     <EditText
         android:id="@+id/edit_clave"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:inputType="textPassword"
         android:layout_gravity="center"
         android:background="@drawable/edittext_esquina_redondeada"/>
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Guradar"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/colorVerde"
             />
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:background="?android:attr/selectableItemBackground"
             android:textColor="@color/colorVerde"
             />
