@@ -108,6 +108,7 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
                 break;
             case 4:
                 Toast.makeText(context, "El Usuario ya Existe", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 Toast.makeText(context, "El Usuario se Creo Correctamente", Toast.LENGTH_SHORT).show();
                 break;
