@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,12 +34,12 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 final Consultas consultas = new Consultas(LoginActivity.this);
                 boolean respuesta = consultas.exsisteUsuario(edit_email.getText().toString());
-                if (respuesta){
+                if (respuesta) {
                     boolean passwordCorrecto = consultas.validarPassword(edit_password.getText().toString());
-                    if (passwordCorrecto){
-                        Intent startAplication = new Intent(LoginActivity.this,MainActivity.class);
+                    if (passwordCorrecto) {
+                        Intent startAplication = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(startAplication);
-                    }else {
+                    } else {
                         Toast.makeText(LoginActivity.this, "Clave o Usuario Incorrectos", Toast.LENGTH_SHORT).show();
                         edit_email.setText("");
                         edit_password.setText("");
@@ -64,10 +65,10 @@ public class LoginActivity extends AppCompatActivity {
                             final AlertDialog alertaRegUsuario = new AlertDialog.Builder(LoginActivity.this).create();
                             LayoutInflater inflater = LoginActivity.this.getLayoutInflater();
                             v = inflater.inflate(R.layout.dialogo_reg_usuario_form, (ViewGroup) findViewById(R.id.dialogo_reg_usuario));
-                            final EditText edit_nombre = (EditText)v.findViewById(R.id.edit_nombre);
-                            final EditText edit_apellido = (EditText)v.findViewById(R.id.edit_apellido);
-                            final EditText edit_email = (EditText)v.findViewById(R.id.edit_email);
-                            final EditText edit_clave = (EditText)v.findViewById(R.id.edit_clave);
+                            final EditText edit_nombre = (EditText) v.findViewById(R.id.edit_nombre);
+                            final EditText edit_apellido = (EditText) v.findViewById(R.id.edit_apellido);
+                            final EditText edit_email = (EditText) v.findViewById(R.id.edit_email);
+                            final EditText edit_clave = (EditText) v.findViewById(R.id.edit_clave);
                             Button btn_guardar_usuario = (Button) v.findViewById(R.id.btn_guardar_usuario);
                             Button btn_cancelar = (Button) v.findViewById(R.id.btn_cancelar_usuario);
                             alertaRegUsuario.setView(v);
@@ -82,10 +83,14 @@ public class LoginActivity extends AppCompatActivity {
                             btn_guardar_usuario.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    usuario = new CrearUsuarios(LoginActivity.this,edit_email.getText().toString(),edit_clave.getText().toString());
-                                    usuario.execute();
-                                   // alertaRegUsuario.dismiss();
-                                   // alertaPreguntaCrearUsuario.dismiss();
+                                    EstadoConexcion estadoConexcion = new EstadoConexcion(LoginActivity.this);
+                                    Log.v("Estado conexion", "Estado" + estadoConexcion.verificarConexionInternet());
+                                    if (estadoConexcion.verificarConexionInternet()) {
+                                        usuario = new CrearUsuarios(LoginActivity.this, edit_email.getText().toString(), edit_clave.getText().toString());
+                                        usuario.execute();
+                                    } else {
+                                        Toast.makeText(LoginActivity.this, "No hay conexion a Internet", Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             });
                         }

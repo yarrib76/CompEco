@@ -96,21 +96,21 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
         pDialog.cancel();
         switch (resultado){
             case 0:
-                Toast.makeText(context, "No hay conexion de Internet", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "No hay conexion de Internet", Toast.LENGTH_LONG).show();
             case 1:
-                Toast.makeText(context, "Debe Ingresar un Mail", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Debe Ingresar un Mail", Toast.LENGTH_LONG).show();
                 break;
             case 2:
-                Toast.makeText(context, "Debe Ingresar una Contraseña", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Debe Ingresar una Contraseña", Toast.LENGTH_LONG).show();
                 break;
             case 3:
-                Toast.makeText(context, "Debe Ingresar un Mail y una Consraseña", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Debe Ingresar un Mail y una Consraseña", Toast.LENGTH_LONG).show();
                 break;
             case 4:
-                Toast.makeText(context, "El Usuario ya Existe", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "El Usuario ya Existe", Toast.LENGTH_LONG).show();
                 break;
             default:
-                Toast.makeText(context, "El Usuario se Creo Correctamente", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "El Usuario se Creo Correctamente", Toast.LENGTH_LONG).show();
                 break;
         }
     }
