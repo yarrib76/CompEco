@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edit_email;
     private EditText edit_password;
     private Button btn_login;
+    private CrearUsuarios usuario;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,16 +82,10 @@ public class LoginActivity extends AppCompatActivity {
                             btn_guardar_usuario.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    DbProvider dbProvider = new DbProvider(LoginActivity.this);
-                                    ContentValues contentValues = new ContentValues();
-                                    contentValues.put(Contract.Usuarios.COL_NOMBRE, edit_nombre.getText().toString());
-                                    contentValues.put(Contract.Usuarios.COL_APELLIDO,edit_apellido.getText().toString());
-                                    contentValues.put(Contract.Usuarios.COL_EMAIL,edit_email.getText().toString());
-                                    contentValues.put(Contract.Usuarios.COL_CLAVE,edit_clave.getText().toString());
-                                    dbProvider.insert(Contract.Usuarios.TABLA_USUARIOS, contentValues);
-                                    Toast.makeText(LoginActivity.this, "El usuario se creo correctamente", Toast.LENGTH_SHORT).show();
-                                    alertaRegUsuario.dismiss();
-                                    alertaPreguntaCrearUsuario.dismiss();
+                                    usuario = new CrearUsuarios(LoginActivity.this,edit_email.getText().toString(),edit_clave.getText().toString());
+                                    usuario.execute();
+                                   // alertaRegUsuario.dismiss();
+                                   // alertaPreguntaCrearUsuario.dismiss();
                                 }
                             });
                         }
