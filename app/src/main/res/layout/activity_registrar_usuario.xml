@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/dialogo_reg_usuario">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alta de Usuario"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center" />
+    <EditText
+        android:id="@+id/edit_nombre"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apellido"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
+    <EditText
+        android:id="@+id/edit_apellido"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:inputType="textEmailAddress"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password"
+        android:textSize="20dp"
+        android:layout_gravity="center" />
+    <EditText
+        android:id="@+id/edit_clave"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:inputType="textPassword"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext_esquina_redondeada"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <Button
+            android:id="@+id/btn_guardar_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guradar"
+            android:textSize="15dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/colorVerde"
+            />
+        <Button
+            android:id="@+id/btn_cancelar_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            android:layout_marginLeft="20dp"
+            android:textSize="15dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:textColor="@color/colorVerde"
+            />
+    </LinearLayout>
+</LinearLayout>

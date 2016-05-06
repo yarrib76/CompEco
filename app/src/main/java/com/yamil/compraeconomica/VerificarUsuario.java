@@ -1,11 +1,22 @@
 package com.yamil.compraeconomica;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.AsyncTask;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.Toast;
+
+import com.yamil.compraeconomica.Data.Contract;
+import com.yamil.compraeconomica.Data.DbProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,10 +27,11 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+
 /**
- * Created by yamil on 4/29/16.
+ * Created by yamil on 4/19/16.
  */
-public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
+public class VerificarUsuario extends AsyncTask <Void, Void, Integer> {
     int resultado;
     String email;
     ProgressDialog pDialog;
@@ -28,12 +40,10 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
     String codval = "4015";
     private SharedPreferences configuracion;
 
-    public CrearUsuarios(Context context, String email, String password) {
+    public VerificarUsuario(Context context, String email, String password) {
+        this.context = context;
         this.email = email;
         this.password = password;
-        this.context = context;
-        configuracion = context.getSharedPreferences("config", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = configuracion.edit();
         pDialog = new ProgressDialog(context);
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pDialog.setMessage("Aguarde un momento,por favor...");
@@ -43,7 +53,7 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
 
     @Override
     protected Integer doInBackground(Void... params) {
-        String uriBuilder = "http://190.221.134.35:8003/api/crearloginmovil?email=" + email + "&&" + "password=" + password +
+        String uriBuilder = "http://190.221.134.35:8003/api/loginmovil?email=" + email + "&&" + "password=" + password +
                 "&&" + "codval=" + codval;
         String result = "";
         URL url = null;
@@ -91,36 +101,55 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
         }
         return resultado;
     }
-
     @Override
     protected void onPostExecute(Integer resultado) {
         pDialog.cancel();
         switch (resultado){
             case 0:
-                Toast.makeText(context, "No hay conexion de Internet", Toast.LENGTH_LONG).show();
+                final AlertDialog alerta = new AlertDialog.Builder(context).create();
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService( Context.LAYOUT_INFLATER_SERVICE );
+                View view = inflater.inflate(R.layout.dialogregusuario, null);
+                Button btn_respuesta_si = (Button) view.findViewById(R.id.btn_respuesta_si);
+                Button btn_respuesta_no = (Button) view.findViewById(R.id.btn_respuesta_no);
+                btn_respuesta_si.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent registrarUsuario = new Intent(context,RegistrarUsuarioActivity.class);
+                        context.startActivity(registrarUsuario);
+                        alerta.dismiss();
+                    }
+                });
+                btn_respuesta_no.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alerta.dismiss();
+                    }
+                });
+                alerta.setView(view);
+                alerta.show();
+                break;
             case 1:
-                Toast.makeText(context, "Debe Ingresar un Mail", Toast.LENGTH_LONG).show();
+                Intent ingresar = new Intent(context,MainActivity.class);
+                context.startActivity(ingresar);
                 break;
             case 2:
-                Toast.makeText(context, "Debe Ingresar una Contraseña", Toast.LENGTH_LONG).show();
-                break;
-            case 3:
-                Toast.makeText(context, "Debe Ingresar un Mail y una Consraseña", Toast.LENGTH_LONG).show();
-                break;
-            case 4:
-                Toast.makeText(context, "El Usuario ya Existe", Toast.LENGTH_LONG).show();
-                break;
-            default:
-                Toast.makeText(context, "El Usuario se Creo Correctamente", Toast.LENGTH_LONG).show();
-                Intent login = new Intent(context,LoginActivity.class);
-                context.startActivity(login);
+                Toast.makeText(context, "Password Incorrecta", Toast.LENGTH_LONG).show();
                 break;
         }
     }
-
     @Override
     protected void onPreExecute() {
         pDialog.setProgress(0);
         pDialog.show();
+    }
+
+    public boolean exsisteUsuario(String email) {
+
+        return false;
+    }
+
+    public boolean validarPassword(String password) {
+
+        return false;
     }
 }
