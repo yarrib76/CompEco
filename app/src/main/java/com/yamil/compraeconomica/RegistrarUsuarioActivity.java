@@ -31,7 +31,7 @@ public class RegistrarUsuarioActivity extends AppCompatActivity {
                 EstadoConexcion estadoConexcion = new EstadoConexcion(RegistrarUsuarioActivity.this);
                 if (estadoConexcion.verificarConexionInternet()){
                     CrearUsuarios crearUsuarios = new CrearUsuarios(RegistrarUsuarioActivity.this,edit_email.getText().toString(),
-                            edit_clave.getText().toString());
+                            edit_clave.getText().toString(),edit_nombre.getText().toString(),edit_apellido.getText().toString());
                     crearUsuarios.execute();
                 }else {
                     Toast.makeText(RegistrarUsuarioActivity.this, "No hay conexion a internet", Toast.LENGTH_SHORT).show();

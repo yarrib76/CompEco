@@ -22,15 +22,19 @@ import java.net.URL;
 public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
     int resultado;
     String email;
+    String nombre;
+    String apellido;
     ProgressDialog pDialog;
     String password;
     Context context;
     String codval = "4015";
     private SharedPreferences configuracion;
 
-    public CrearUsuarios(Context context, String email, String password) {
+    public CrearUsuarios(Context context, String email, String password, String nombre, String apellido) {
         this.email = email;
         this.password = password;
+        this.nombre = nombre;
+        this.apellido =apellido;
         this.context = context;
         configuracion = context.getSharedPreferences("config", Context.MODE_PRIVATE);
         pDialog = new ProgressDialog(context);
@@ -43,6 +47,7 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
     @Override
     protected Integer doInBackground(Void... params) {
         String uriBuilder = "http://190.221.134.35:8003/api/crearloginmovil?email=" + email + "&&" + "password=" + password +
+                "&&" + "nombre=" + nombre + "&&" + "apellido=" + apellido +
                 "&&" + "codval=" + codval;
         String result = "";
         URL url = null;
