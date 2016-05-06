@@ -49,6 +49,7 @@ public class VerificarUsuario extends AsyncTask <Void, Void, Integer> {
         pDialog.setMessage("Aguarde un momento,por favor...");
         pDialog.setCancelable(true);
         pDialog.setMax(100);
+        configuracion = context.getSharedPreferences("config", Context.MODE_PRIVATE);
     }
 
     @Override
@@ -128,12 +129,15 @@ public class VerificarUsuario extends AsyncTask <Void, Void, Integer> {
                 alerta.setView(view);
                 alerta.show();
                 break;
-            case 1:
-                Intent ingresar = new Intent(context,MainActivity.class);
-                context.startActivity(ingresar);
-                break;
             case 2:
                 Toast.makeText(context, "Password Incorrecta", Toast.LENGTH_LONG).show();
+                break;
+            default:
+                SharedPreferences.Editor edit = configuracion.edit();
+                edit.putInt("session_id", resultado);
+                edit.apply();
+                Intent ingresar = new Intent(context,MainActivity.class);
+                context.startActivity(ingresar);
                 break;
         }
     }
@@ -141,15 +145,5 @@ public class VerificarUsuario extends AsyncTask <Void, Void, Integer> {
     protected void onPreExecute() {
         pDialog.setProgress(0);
         pDialog.show();
-    }
-
-    public boolean exsisteUsuario(String email) {
-
-        return false;
-    }
-
-    public boolean validarPassword(String password) {
-
-        return false;
     }
 }

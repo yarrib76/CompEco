@@ -33,7 +33,6 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
         this.password = password;
         this.context = context;
         configuracion = context.getSharedPreferences("config", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = configuracion.edit();
         pDialog = new ProgressDialog(context);
         pDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         pDialog.setMessage("Aguarde un momento,por favor...");
@@ -111,6 +110,9 @@ public class CrearUsuarios extends AsyncTask<Void, Void, Integer> {
                 Toast.makeText(context, "El Usuario ya Existe", Toast.LENGTH_LONG).show();
                 break;
             default:
+                SharedPreferences.Editor edit = configuracion.edit();
+                edit.putInt("session_id", resultado);
+                edit.apply();
                 Toast.makeText(context, "El Usuario se Creo Correctamente", Toast.LENGTH_LONG).show();
                 Intent login = new Intent(context,LoginActivity.class);
                 context.startActivity(login);
